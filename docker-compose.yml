@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  react-frontend:
+  react-nginx:
     container_name: react-nginx
     build:
       context: .
