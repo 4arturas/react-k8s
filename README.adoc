@@ -1,5 +1,5 @@
 = React Docker Image.
-v1.0, 2020-11-10
+v1.0, 2021-01-14
 :example-caption!:
 :sectnums:
 :sectnumlevels: 10
@@ -23,10 +23,8 @@ curl http://localhost:8080
 [source]
 curl http://192.168.56.10:8080/
 
+[source]
+kubectl apply -f react-k8s.yaml
 
 [source]
-docker-compose up
-
-[source]
-docker-compose down
-
+kubectl delete -f react-k8s.yaml
