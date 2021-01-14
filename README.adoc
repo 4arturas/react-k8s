@@ -10,6 +10,7 @@ docker build -t react-nginx .
 
 [source]
 docker run --rm -it -p 8080:80 react-nginx
+docker run --rm -it -p 8081:443 react-nginx
 
 [source]
 docker tag react-nginx arturix/react-nginx
@@ -28,3 +29,35 @@ kubectl apply -f react-k8s.yaml
 
 [source]
 kubectl delete -f react-k8s.yaml
+
+[plantuml, Payment-Service, png]
+....
+@startuml
+title I think all events will be saved in the Database.\n User clicks on "Events" in menu\nand let's say 100 of events will be seen
+|UI|
+    start
+    :Spring give me\n100 of events from history;
+|Spring|
+    :Database give me\n100 of events from history;
+|Database|
+    :select * from events\nwhere rownum <= 100\norder by event_date desc;
+|Spring|
+    :100 of events;
+|UI|
+    :100 of events\nwill be displayed\nfor user in table;
+    :Websockets subscribe for events;
+    :Here the gap can occur.\nWe should ask Andy is this lack of events is important,\n if yes, then we will solve this problem somehow<
+while (Events stream)
+   |Spring|
+        :Events stream;
+    |Kafka|
+        :Events stream;
+    |Spring|
+        :Events stream;
+    |UI|
+        :user sees the flow of events,\nduring events streaming\n100th table row is removed;
+endwhile
+:User leaves the Events page;
+stop;
+@enduml
+....

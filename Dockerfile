@@ -20,14 +20,6 @@ RUN rm -rf ./*
 # Copy static assets from builder stage
 COPY --from=builder /app/build .
 
-RUN mkdir -p /etc/nginx/snippets
-RUN mkdir -p /etc/ssl/private
-RUN mkdir -p /etc/nginx/sites-available
-
-COPY nginx/example.com.pem /etc/ssl/certs/example.com.pem
-COPY nginx/example.com.key /etc/ssl/private/example.com.key
-COPY nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
-
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginx.conf /etc/nginx/conf.d
 EXPOSE 80
