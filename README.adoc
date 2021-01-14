@@ -12,6 +12,12 @@ docker build -t react-nginx .
 docker run --rm -it -p 8080:80 react-nginx
 
 [source]
+docker tag react-nginx arturix/react-nginx
+
+[source]
+docker push arturix/react-nginx
+
+[source]
 curl http://localhost:8080
 
 [source]
