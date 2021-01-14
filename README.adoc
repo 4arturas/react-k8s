@@ -1,0 +1,19 @@
+= React Docker Image.
+v1.0, 2020-11-10
+:example-caption!:
+:sectnums:
+:sectnumlevels: 10
+
+== Docker
+[source]
+docker build -t react-frontend .
+
+[source]
+docker push arturix/react-frontend
+
+[source]
+docker run -p 3000:3000 react-frontend
+
+[source]
+docker tag first arturix/react-frontend
+
