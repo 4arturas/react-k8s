@@ -1,11 +1,8 @@
-FROM node:10-alpine as builder
-
-# install and cache app dependencies
-COPY package.json package-lock.json ./
-RUN npm install --only=prod&& mkdir /react-frontend && mv ./node_modules ./react-frontend
-
-WORKDIR /react-frontend
-
+# Name the node stage "builder"
+FROM node:10 AS builder
+# Set working directory
+WORKDIR /app
+# Copy all files from current directory to working dir in image
 COPY . .
-
-RUN npm run build
+# install node modules and build assets
+RUN yarn install && yarn build
