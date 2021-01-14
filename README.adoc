@@ -10,7 +10,6 @@ docker build -t react-nginx .
 
 [source]
 docker run --rm -it -p 8080:80 react-nginx
-docker run --rm -it -p 8081:443 react-nginx
 
 [source]
 docker tag react-nginx arturix/react-nginx
