@@ -17,3 +17,10 @@ curl http://localhost:8080
 [source]
 curl http://192.168.56.10:8080/
 
+
+[source]
+docker-compose up
+
+[source]
+docker-compose down
+
