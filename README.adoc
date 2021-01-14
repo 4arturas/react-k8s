@@ -6,14 +6,14 @@ v1.0, 2020-11-10
 
 == Docker
 [source]
-docker build -t react-frontend .
+docker build -t react-nginx .
 
 [source]
-docker push arturix/react-frontend
+docker run --rm -it -p 8080:80 react-nginx
 
 [source]
-docker run -p 3000:3000 react-frontend
+curl http://localhost:8080
 
 [source]
-docker tag first arturix/react-frontend
+curl http://192.168.56.10:8080/
 
